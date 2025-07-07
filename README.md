@@ -98,4 +98,3 @@ SOURCE 4_procedure_calls.sql;
 
 ---
 
-**¡Proyecto completado!** Para cualquier ajuste adicional (nuevos reportes, más validaciones, etc.), no dudes en indicarlo.
