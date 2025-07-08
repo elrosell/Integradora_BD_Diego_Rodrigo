@@ -4,7 +4,7 @@
 DELIMITER $$
 
 -- 1. Procedimiento: Obtener funciones compradas de un cliente
-CREATE OR REPLACE PROCEDURE sp_funciones_cliente(IN p_id_cliente INT)
+CREATE PROCEDURE sp_funciones_cliente(IN p_id_cliente INT)
 BEGIN
   SELECT p.titulo, f.fecha_funcion, f.hora_inicio
   FROM Venta v
@@ -15,7 +15,7 @@ BEGIN
 END $$
 
 -- 2a. Insertar Cliente con validaciones
-CREATE OR REPLACE PROCEDURE sp_insert_cliente(
+CREATE PROCEDURE sp_insert_cliente(
   IN p_nombre VARCHAR(50),
   IN p_ap_paterno VARCHAR(50),
   IN p_ap_materno VARCHAR(50),
@@ -40,7 +40,7 @@ BEGIN
 END $$
 
 -- 2b. Insertar Complejo
-CREATE OR REPLACE PROCEDURE sp_insert_complejo(IN p_nombre VARCHAR(100),
+CREATE PROCEDURE sp_insert_complejo(IN p_nombre VARCHAR(100),
                                                IN p_ciudad VARCHAR(100),
                                                IN p_estado VARCHAR(100),
                                                IN p_direccion VARCHAR(255))
@@ -55,7 +55,7 @@ BEGIN
 END $$
 
 -- 2c. Insertar Producto
-CREATE OR REPLACE PROCEDURE sp_insert_producto(IN p_nombre VARCHAR(100),
+CREATE PROCEDURE sp_insert_producto(IN p_nombre VARCHAR(100),
                                                IN p_tipo ENUM('alimento','promocional'),
                                                IN p_precio DECIMAL(6,2),
                                                IN p_existencias INT)
@@ -68,7 +68,7 @@ BEGIN
 END $$
 
 -- 2d. Insertar Funcion
-CREATE OR REPLACE PROCEDURE sp_insert_funcion(
+CREATE PROCEDURE sp_insert_funcion(
   IN p_id_sala INT,
   IN p_id_pelicula INT,
   IN p_fecha DATE,
@@ -89,30 +89,30 @@ BEGIN
 END $$
 
 -- 3. Procedimientos de eliminación (genéricos usando SQL dinámico)
-CREATE OR REPLACE PROCEDURE sp_delete_empleado(IN p_id INT)
+CREATE PROCEDURE sp_delete_empleado(IN p_id INT)
 BEGIN
   DELETE FROM Empleado WHERE id_empleado = p_id;
 END $$
 
-CREATE OR REPLACE PROCEDURE sp_delete_producto(IN p_id INT)
+CREATE PROCEDURE sp_delete_producto(IN p_id INT)
 BEGIN
   DELETE FROM Producto WHERE id_producto = p_id;
 END $$
 
 -- 4. Procedimientos de modificación (ejemplo para cliente y producto)
-CREATE OR REPLACE PROCEDURE sp_update_cliente_correo(IN p_id_cliente INT, IN p_nuevo_correo VARCHAR(100))
+CREATE PROCEDURE sp_update_cliente_correo(IN p_id_cliente INT, IN p_nuevo_correo VARCHAR(100))
 BEGIN
   UPDATE ContactoCliente SET valor = p_nuevo_correo
   WHERE id_cliente = p_id_cliente AND tipo = 'correo';
 END $$
 
-CREATE OR REPLACE PROCEDURE sp_update_producto_precio(IN p_id_producto INT, IN p_precio DECIMAL(6,2))
+CREATE PROCEDURE sp_update_producto_precio(IN p_id_producto INT, IN p_precio DECIMAL(6,2))
 BEGIN
   UPDATE Producto SET precio = p_precio WHERE id_producto = p_id_producto;
 END $$
 
 -- 5. Procedimiento clientes con boletos para función específica
-CREATE OR REPLACE PROCEDURE sp_clientes_funcion_fecha(
+CREATE PROCEDURE sp_clientes_funcion_fecha(
   IN p_id_funcion INT,
   IN p_fecha DATE
 )
@@ -125,7 +125,7 @@ BEGIN
 END $$
 
 -- 6. Procedimiento datos clientes por complejo
-CREATE OR REPLACE PROCEDURE sp_clientes_complejo(
+CREATE PROCEDURE sp_clientes_complejo(
   IN p_id_complejo INT
 )
 BEGIN
