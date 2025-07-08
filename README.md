@@ -3,11 +3,16 @@
 
 ## Portada
 **Equipo Integradora 2 Tipo B**  
+
 Materia: Base de Datos  
+
 Maestra: Rosa Iliana Fuentes Cruz
+
 TeamMC integrantes: 
+
 ⌁ Delgado Cerros Rodrigo Daniel
 ⌁ García Sánchez Diego Emmanuel
+
 Fecha: Julio 2025  
 
 ## Introducción
